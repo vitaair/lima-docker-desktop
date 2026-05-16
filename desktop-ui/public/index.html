@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Lima Docker Desktop</title>
+    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <aside class="rail">
+      <div class="brand">
+        <img class="mark" src="/icon.svg" alt="" />
+        <span>Lima Docker</span>
+      </div>
+      <button class="rail-button active" data-view="containers" data-i18n="nav.containers">Containers</button>
+      <button class="rail-button" data-view="images" data-i18n="nav.images">Images</button>
+      <button class="rail-button" data-view="volumes" data-i18n="nav.volumes">Volumes</button>
+      <button class="rail-button" data-view="builds" data-i18n="nav.builds">Builds</button>
+      <button class="rail-button" data-view="settings" data-i18n="nav.settings">Settings</button>
+      <button class="rail-button" data-view="troubleshooting" data-i18n="nav.troubleshooting">Troubleshooting</button>
+    </aside>
+
+    <main>
+      <header class="topbar">
+        <div>
+          <h1>Lima Docker Desktop</h1>
+          <p id="subtitle" data-i18n="app.subtitle">Docker Engine running inside Lima, with a local desktop-style control plane.</p>
+        </div>
+        <div class="topbar-actions">
+          <div class="status">
+            <span id="health-dot" class="dot"></span>
+            <span id="health-text">Checking</span>
+          </div>
+          <button id="refresh" data-i18n="action.refresh">Refresh</button>
+          <select id="language" aria-label="Language">
+            <option value="en">English</option>
+            <option value="zh">中文</option>
+          </select>
+        </div>
+      </header>
+
+      <section class="summary" id="summary"></section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h2 id="view-title">Containers</h2>
+          <span id="view-count"></span>
+        </div>
+        <div id="content" class="content"></div>
+      </section>
+    </main>
+
+    <dialog id="logs-dialog">
+      <div class="dialog-head">
+        <strong id="logs-title">Logs</strong>
+        <button id="close-logs">Close</button>
+      </div>
+      <pre id="logs"></pre>
+    </dialog>
+
+    <dialog id="inspect-dialog">
+      <div class="dialog-head">
+        <strong id="inspect-title">Inspect</strong>
+        <button id="close-inspect">Close</button>
+      </div>
+      <pre id="inspect"></pre>
+    </dialog>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
