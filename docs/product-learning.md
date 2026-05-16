@@ -2,6 +2,8 @@
 
 This project should keep learning from excellent local container products while staying honest about its own role: a lightweight, open, repairable Docker control plane.
 
+Local source checkout details are tracked in `docs/upstream-source-checkouts.md`.
+
 ## Products To Study
 
 ### Docker Desktop

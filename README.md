@@ -103,6 +103,7 @@ The main failure chain we hit was:
 - `docs/known-pitfalls.md`: errors and fixes
 - `docs/research-notes.md`: related projects and what this kit borrows from them
 - `docs/product-learning.md`: product case-study notes and future product bets
+- `docs/upstream-source-checkouts.md`: local clone map for studying related open-source products
 - `docs/platforms/`: platform support notes
 - `artifacts/`: optional local compiled binary and checksums
 
