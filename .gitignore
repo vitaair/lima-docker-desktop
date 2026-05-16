@@ -1,0 +1,11 @@
+.DS_Store
+*.log
+*.tmp
+build/
+dist/
+qemu-*.tar.gz
+qemu-*.tar.xz
+*.img
+*.qcow2
+artifacts/*.jpg
+artifacts/*.png
