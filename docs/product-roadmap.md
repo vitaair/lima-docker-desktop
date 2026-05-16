@@ -1,0 +1,58 @@
+# Product Roadmap
+
+Lima Docker Desktop should evolve as a maintained open-source product, not a one-off repair script.
+
+## Product Principles
+
+- Keep the Docker Engine path native whenever the host supports it.
+- Keep the UI consistent across macOS, Linux, and Windows.
+- Treat platform installers as adapters, not forks of Docker.
+- Prefer small auditable scripts over opaque automation.
+- Document every successful repair path and every dead end.
+
+## Near-Term Priorities
+
+1. Stabilize GitHub publishing
+   - Restore local GitHub authentication.
+   - Push the local git history to `vitaair/lima-docker-desktop`.
+   - Move the 24MB QEMU binary into GitHub Releases.
+
+2. Improve the local desktop UI
+   - Add a platform overview card on the landing screen.
+   - Add explicit install/repair action buttons for each adapter.
+   - Add Docker Compose project visibility.
+   - Add resource usage and disk usage views.
+
+3. Validate more hosts
+   - macOS Apple Silicon with Lima.
+   - Ubuntu LTS.
+   - CentOS/RHEL/openEuler family.
+   - Windows 10/11 with WSL2.
+
+4. Improve installers
+   - Add dry-run mode to every installer.
+   - Add rollback notes where scripts modify host state.
+   - Add clearer permission prompts for sudo/launchd/systemd.
+
+5. Release packaging
+   - Publish QEMU binaries as release assets.
+   - Add checksums per release.
+   - Add a copy-paste install command per platform.
+
+## Quality Gates
+
+Before each release:
+
+- `node -c desktop-ui/server.js`
+- `node -c desktop-ui/lib/platform.js`
+- `node -c desktop-ui/public/app.js`
+- `bash -n scripts/*.sh scripts/installers/*.sh`
+- `./scripts/doctor.sh`
+- UI loads at `http://127.0.0.1:3875`
+- `/api/state` returns `healthy`, `system.host`, `system.profile`, and `system.recommendations`
+
+## Current Known Blockers
+
+- Local `git push` is blocked by missing GitHub HTTPS credentials.
+- Large QEMU binary should be published as a GitHub Release asset, not uploaded through the connector into the source tree.
+- Windows and Linux installers are planned paths and need real host validation.
