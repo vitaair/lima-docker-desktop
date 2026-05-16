@@ -1,0 +1,12 @@
+NAME      STATUS     SSH                CPUS    MEMORY    DISK      DIR
+docker    Running    127.0.0.1:56354    4       4GiB      100GiB    ~/.lima/docker
+
+QEMU emulator version 8.2.3
+Available netdev backend types include: user
+
+Docker Engine - Community 29.5.0
+docker ps returns successfully
+
+launchd agent:
+com.vitaair.docker-lima-start
+
