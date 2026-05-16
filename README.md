@@ -15,6 +15,7 @@ This project is not affiliated with Docker Inc. or the Lima project.
 - one install command per host family
 - no custom Docker engine fork
 - native Docker Engine first, compatibility layer only when needed
+- a lightweight, beautiful, repairable desktop experience that learns from Docker Desktop, OrbStack, Podman Desktop, Rancher Desktop, Colima/Lima, and Portainer
 
 ## Platform Strategy
 
@@ -101,6 +102,7 @@ The main failure chain we hit was:
 - `docs/debug-log.md`: detailed debugging notes from the successful repair
 - `docs/known-pitfalls.md`: errors and fixes
 - `docs/research-notes.md`: related projects and what this kit borrows from them
+- `docs/product-learning.md`: product case-study notes and future product bets
 - `docs/platforms/`: platform support notes
 - `artifacts/`: optional local compiled binary and checksums
 

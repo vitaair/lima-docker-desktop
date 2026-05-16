@@ -10,6 +10,7 @@ const translations = {
     "nav.images": "Images",
     "nav.volumes": "Volumes",
     "nav.builds": "Builds",
+    "nav.product": "Product Lab",
     "nav.settings": "Settings",
     "nav.troubleshooting": "Troubleshooting",
     "action.refresh": "Refresh",
@@ -32,6 +33,28 @@ const translations = {
     "builds.title": "Builds",
     "builds.description": "Build history is not tracked by Docker Engine directly. This page is reserved for BuildKit and compose workflow integration.",
     "builds.available": "Available now",
+    "product.title": "Product Lab",
+    "product.description": "A living upgrade board for keeping Lima Docker Desktop lightweight, convenient, beautiful, and extensible.",
+    "product.learning": "Learning from",
+    "product.bets": "Next product bets",
+    "product.lightweight": "Lightweight",
+    "product.lightweightDetail": "Fast startup, low CPU, low memory, optional Kubernetes, release assets instead of source-tree binaries.",
+    "product.convenient": "Convenient",
+    "product.convenientDetail": "One command per host family, Docker and UI start together, clear repair prompts, Chinese and English built in.",
+    "product.beautiful": "Beautiful",
+    "product.beautifulDetail": "Familiar Docker-style structure, calmer status language, simple whale identity, no noisy debugging chrome.",
+    "product.extensible": "Extensible",
+    "product.extensibleDetail": "Platform adapters, stable local API, future plugins for engines, diagnostics, Compose, and Kubernetes.",
+    "product.case.docker": "Docker Desktop: familiar resource navigation and action placement.",
+    "product.case.orbstack": "OrbStack: fast, native-feeling, low-overhead daily development.",
+    "product.case.podman": "Podman Desktop: multi-engine adapters and extension ecosystem.",
+    "product.case.rancher": "Rancher Desktop: open-source transparency and explicit Kubernetes/runtime choices.",
+    "product.case.colima": "Colima/Lima: small, scriptable, CLI-first reliability.",
+    "product.bet.release": "Release packaging with checksums and copy-paste install commands.",
+    "product.bet.firstRun": "First-run guide that detects host, engine path, and missing tools.",
+    "product.bet.compose": "Compose project visibility and grouped container workflows.",
+    "product.bet.cleanup": "Disk usage, image cleanup, and safe prune actions.",
+    "product.bet.plugins": "A plugin manifest for future engine adapters and diagnostics.",
     "settings.engine": "Engine",
     "settings.docker": "Docker",
     "settings.context": "Context",
@@ -95,6 +118,7 @@ const translations = {
     "nav.images": "镜像",
     "nav.volumes": "数据卷",
     "nav.builds": "构建",
+    "nav.product": "产品实验室",
     "nav.settings": "设置",
     "nav.troubleshooting": "故障排查",
     "action.refresh": "刷新",
@@ -117,6 +141,28 @@ const translations = {
     "builds.title": "构建",
     "builds.description": "Docker Engine 本身不直接记录构建历史。这个页面预留给 BuildKit 和 compose 工作流集成。",
     "builds.available": "当前可用",
+    "product.title": "产品实验室",
+    "product.description": "这里是 Lima Docker Desktop 的持续升级看板：轻量、方便、好用、美观、扩展强。",
+    "product.learning": "学习对象",
+    "product.bets": "下一批产品下注",
+    "product.lightweight": "轻量化",
+    "product.lightweightDetail": "启动快、低 CPU、低内存、Kubernetes 可选，二进制进 Release 不塞源码仓库。",
+    "product.convenient": "方便好用",
+    "product.convenientDetail": "每类系统一条命令，Docker 和 UI 一起启动，故障提示清楚，中英文内置。",
+    "product.beautiful": "美观克制",
+    "product.beautifulDetail": "保留 Docker 用户熟悉的结构，状态表达更安静，鲸鱼标识简约，排障时不制造噪音。",
+    "product.extensible": "扩展能力",
+    "product.extensibleDetail": "平台适配器、稳定本地 API，未来支持引擎、诊断、Compose、Kubernetes 插件。",
+    "product.case.docker": "Docker Desktop：熟悉的资源导航和操作位置。",
+    "product.case.orbstack": "OrbStack：快速、贴近系统、低开销的日常开发体验。",
+    "product.case.podman": "Podman Desktop：多引擎适配器和扩展生态。",
+    "product.case.rancher": "Rancher Desktop：开源透明，以及清晰的 Kubernetes/运行时选择。",
+    "product.case.colima": "Colima/Lima：小而可靠、脚本友好、CLI 优先。",
+    "product.bet.release": "Release 打包，提供校验和与可复制安装命令。",
+    "product.bet.firstRun": "首次启动向导，自动识别主机、引擎路径和缺失工具。",
+    "product.bet.compose": "Compose 项目视图和分组容器工作流。",
+    "product.bet.cleanup": "磁盘占用、镜像清理和安全 prune 操作。",
+    "product.bet.plugins": "插件 manifest，为未来引擎适配器和诊断能力留接口。",
     "settings.engine": "引擎",
     "settings.docker": "Docker",
     "settings.context": "上下文",
@@ -176,6 +222,7 @@ const viewKeys = {
   images: "nav.images",
   volumes: "nav.volumes",
   builds: "nav.builds",
+  product: "nav.product",
   settings: "nav.settings",
   troubleshooting: "nav.troubleshooting",
 };
@@ -329,6 +376,47 @@ function buildView() {
     </div>`;
 }
 
+function productView() {
+  const lenses = [
+    ["product.lightweight", "product.lightweightDetail"],
+    ["product.convenient", "product.convenientDetail"],
+    ["product.beautiful", "product.beautifulDetail"],
+    ["product.extensible", "product.extensibleDetail"],
+  ];
+  const cases = ["docker", "orbstack", "podman", "rancher", "colima"];
+  const bets = ["release", "firstRun", "compose", "cleanup", "plugins"];
+  return `
+    <div class="product-lab">
+      <section class="product-hero">
+        <span class="eyebrow">${text(t("product.title"))}</span>
+        <h3>${text(t("product.description"))}</h3>
+      </section>
+      <section class="product-lenses">
+        ${lenses
+          .map(([title, detail]) => `
+            <article class="lens-card">
+              <strong>${text(t(title))}</strong>
+              <span class="muted">${text(t(detail))}</span>
+            </article>`)
+          .join("")}
+      </section>
+      <section class="detail-grid product-sections">
+        <div class="detail-block">
+          <h3>${text(t("product.learning"))}</h3>
+          <ul class="product-list">
+            ${cases.map((item) => `<li>${text(t(`product.case.${item}`))}</li>`).join("")}
+          </ul>
+        </div>
+        <div class="detail-block">
+          <h3>${text(t("product.bets"))}</h3>
+          <ul class="product-list">
+            ${bets.map((item) => `<li>${text(t(`product.bet.${item}`))}</li>`).join("")}
+          </ul>
+        </div>
+      </section>
+    </div>`;
+}
+
 function settingsView() {
   const lima = state.data.lima.find((item) => item.name === "docker" || item.Name === "docker") || state.data.lima[0] || {};
   const host = state.data.system.host || {};
@@ -417,6 +505,7 @@ function renderRows() {
     images: () => data.images.map(imageRow),
     volumes: () => data.volumes.map(volumeRow),
     builds: () => [buildView()],
+    product: () => [productView()],
     settings: () => [settingsView()],
     troubleshooting: () => [troubleshootingView()],
   };
@@ -424,7 +513,7 @@ function renderRows() {
   const viewLabel = t(viewKeys[state.view]);
 
   viewTitle.textContent = viewLabel;
-  viewCount.textContent = ["builds", "settings", "troubleshooting"].includes(state.view) ? "" : t("count.total", { count: rows.length });
+  viewCount.textContent = ["builds", "product", "settings", "troubleshooting"].includes(state.view) ? "" : t("count.total", { count: rows.length });
   content.innerHTML = rows.length ? rows.join("") : empty(t("empty.title", { item: viewLabel.toLowerCase() }));
 }
 

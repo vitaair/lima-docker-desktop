@@ -9,6 +9,8 @@ Lima Docker Desktop should evolve as a maintained open-source product, not a one
 - Treat platform installers as adapters, not forks of Docker.
 - Prefer small auditable scripts over opaque automation.
 - Document every successful repair path and every dead end.
+- Learn continuously from strong adjacent products, then translate the useful parts into our own lightweight open-source workflow.
+- Optimize for startup speed, battery friendliness, clear repair paths, and a UI that stays useful under stress.
 
 ## Near-Term Priorities
 
@@ -22,6 +24,7 @@ Lima Docker Desktop should evolve as a maintained open-source product, not a one
    - Add explicit install/repair action buttons for each adapter.
    - Add Docker Compose project visibility.
    - Add resource usage and disk usage views.
+   - Add a product lab view for learning notes, extension ideas, and release readiness.
 
 3. Validate more hosts
    - macOS Apple Silicon with Lima.
@@ -38,6 +41,11 @@ Lima Docker Desktop should evolve as a maintained open-source product, not a one
    - Publish QEMU binaries as release assets.
    - Add checksums per release.
    - Add a copy-paste install command per platform.
+
+6. Product learning loop
+   - Review Docker Desktop, OrbStack, Podman Desktop, Rancher Desktop, Colima/Lima, and Portainer before major UI changes.
+   - Keep `docs/product-learning.md` updated with product lessons and decisions.
+   - Turn repeated user pain into visible UI affordances or one-command scripts.
 
 ## Quality Gates
 

@@ -38,6 +38,10 @@ async function docker(args) {
   return run("docker", args);
 }
 
+function skipped() {
+  return { ok: true, code: 0, stdout: "", stderr: "" };
+}
+
 async function state() {
   const host = hostPlatform();
   const profile = supportProfile(host);
@@ -47,13 +51,13 @@ async function state() {
     docker(["images", "--format", "{{json .}}"]),
     docker(["volume", "ls", "--format", "{{json .}}"]),
     docker(["network", "ls", "--format", "{{json .}}"]),
-    run("limactl", ["list", "--format", "{{json .}}"]),
-    run("qemu-system-x86_64", ["--version"]),
-    run("qemu-system-x86_64", ["-netdev", "help"]),
-    run("launchctl", ["list"]),
+    host.family === "macos" ? run("limactl", ["list", "--format", "{{json .}}"]) : skipped(),
+    host.family === "macos" ? run("qemu-system-x86_64", ["--version"]) : skipped(),
+    host.family === "macos" ? run("qemu-system-x86_64", ["-netdev", "help"]) : skipped(),
+    host.family === "macos" ? run("launchctl", ["list"]) : skipped(),
     run("docker", ["system", "df", "--format", "{{json .}}"]),
-    run("systemctl", ["is-active", "docker"]),
-    run("wsl.exe", ["--status"]),
+    host.family === "linux" ? run("systemctl", ["is-active", "docker"]) : skipped(),
+    host.family === "windows" ? run("wsl.exe", ["--status"]) : skipped(),
   ]);
   const commandResults = { dockerVersion: version, limaList: lima, qemuNetdev, autostart, systemctlDocker, wslStatus };
   const caps = capabilities(host, commandResults);
